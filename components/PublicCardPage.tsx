@@ -22,8 +22,6 @@ export const PublicCardPage: React.FC<{ data: ExecutiveData }> = ({ data }) => {
     <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-4 bg-brand-dark font-sans">
       <div className="relative perspective-container">
         <div
-      <div className="relative perspective-container w-full max-w-[384px]">
-        <div
           className="relative w-full card-3d"
           style={{
             transform: `rotateY(${isFlipped ? 180 : 0}deg)`,
