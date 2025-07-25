@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from '@react-spring/web';
 import { useGesture } from '@use-gesture/react';
 import { ExecutiveData } from '../../types';
 import { CardPreview } from '../CardPreview';
@@ -60,21 +60,22 @@ export const InteractivePreviewModal: React.FC<InteractivePreviewModalProps> = (
 
   return (
     <div 
-        className="fixed inset-0 bg-black/60 backdrop-blur-lg z-50 flex flex-col items-center justify-center font-sans overflow-hidden" 
+        className="fixed inset-0 bg-black/60 backdrop-blur-lg z-50 flex flex-col items-center justify-center font-sans overflow-hidden p-4" 
         onClick={onClose}
     >
         <animated.div 
           ref={cardRef}
-          className="relative perspective-container animate-fade-in-up"
+          className="relative perspective-container animate-fade-in-up w-full max-w-[384px]"
           onClick={e => e.stopPropagation()}
           onDoubleClick={toggleFlip}
           style={{ scale }}
         >
           <div className="modal-glow"></div>
           <animated.div
-            className="relative w-[384px] h-[720px] card-3d"
+            className="relative w-full card-3d"
             style={{
               transform: 'rotateX(var(--rotateX)) rotateY(var(--rotateY))',
+              aspectRatio: '384 / 720',
               // @ts-ignore
               '--rotateX': rotateX.to(val => `${val}deg`),
               '--rotateY': rotateY.to(val => `${val + (isFlipped ? 180 : 0)}deg`),
